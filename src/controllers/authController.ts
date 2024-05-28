@@ -26,7 +26,11 @@ export const signin = async (req: Request, res: Response) => {
     }
     const token = generateToken(user);
     res.json({ id: user._id, name: user.name, token });
+
+    return { id: user._id, name: user.name, token }
   } catch (error) {
     res.status(400).json({ message: 'Error logging in' });
+
+    return error
   }
 };
